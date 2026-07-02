@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Le Petit Bleu | A café by Commander's Palace</title>
+<title>Kika | Egyptian Artisan Bakery</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Work+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
 <style>
 :root {
@@ -56,7 +56,7 @@ h3 { font-size: clamp(1.5rem, 3vw, 3rem); }
 p { margin: 0; }
 a { color: inherit; text-decoration: none; }
 button { background: none; border: none; cursor: pointer; font-family: inherit; color: inherit; }
-img, video { max-width: 100%; display: block; }
+img { max-width: 100%; display: block; }
 .container {
 max-width: var(--max-width--main);
 margin: 0 auto;
@@ -65,7 +65,6 @@ padding-right: var(--padding-horizontal--main);
 }
 .section { padding-top: var(--padding-vertical--main); padding-bottom: var(--padding-vertical--main); }
 .section-small { padding-top: var(--padding-vertical--small); padding-bottom: var(--padding-vertical--small); }
-.section-large { padding-top: var(--padding-vertical--large); padding-bottom: var(--padding-vertical--large); }
 .text-serif { font-family: 'Playfair Display', serif; letter-spacing: -0.03em; }
 .text-mono { font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; letter-spacing: 0.05em; text-transform: uppercase; }
 .text-small { font-size: 0.875rem; line-height: 1.5; }
@@ -80,7 +79,6 @@ transition: padding 0.175s ease;
 background: var(--swatch--dark); color: var(--swatch--light);
 padding: 1.25rem 2.5rem;
 }
-.btn-primary:hover { padding: 1.25rem 2.5rem; }
 .btn-primary .btn-inner {
 display: inline-flex; align-items: center; justify-content: center;
 border: 1px solid var(--swatch--dark); padding: 0.75rem 1.5rem;
@@ -112,17 +110,123 @@ letter-spacing: -0.02em; color: var(--swatch--dark);
 .marquee_item::before {
 content: '•'; margin-right: 2rem; color: var(--swatch--dark); opacity: 0.3;
 }
-.marquee_animate {
-animation: scroll 20s linear infinite;
-}
+.marquee_animate { animation: scroll 20s linear infinite; }
 @keyframes scroll {
 from { transform: translateX(0); }
 to { transform: translateX(-50%); }
 }
 .marquee-reverse { animation-direction: reverse; }
-.menu_card_wrap {
-border-top: 1px solid var(--swatch--light-secondary);
+.marquee_img_item { flex-shrink: 0; width: 300px; height: 220px; margin-right: 1rem; overflow: hidden; border: 1px solid var(--swatch--light-secondary); }
+.marquee_img_item img { width: 100%; height: 100%; object-fit: cover; }
+.marquee_img_animate { animation: scroll 25s linear infinite; display: flex; }
+/* Navbar */
+.nav_top {
+position: fixed; top: 0; left: 0; width: 100%; z-index: 100;
+background: var(--swatch--dark-secondary); color: var(--swatch--light);
+padding: 0.5rem var(--padding-horizontal--main);
+font-size: 0.75rem; letter-spacing: 0.05em;
+font-family: 'JetBrains Mono', monospace;
+display: flex; justify-content: center; align-items: center; gap: 1rem;
 }
+.nav_main {
+position: fixed; top: 2rem; left: 0; width: 100%; z-index: 99;
+background: transparent; padding: 1rem var(--padding-horizontal--main);
+transition: background 0.3s ease;
+}
+.nav_main.scrolled { background: var(--swatch--light); border-bottom: 1px solid var(--swatch--light-secondary); }
+.nav_inner {
+max-width: var(--max-width--main); margin: 0 auto;
+display: flex; align-items: center; justify-content: space-between;
+}
+.nav_logo {
+font-family: 'Playfair Display', serif; font-size: 1.5rem;
+letter-spacing: 0.15em; color: var(--swatch--light);
+transition: color 0.3s ease;
+}
+.nav_main.scrolled .nav_logo { color: var(--swatch--dark); }
+.nav_links { display: flex; align-items: center; gap: 1.5rem; }
+.nav_link {
+font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase;
+color: var(--swatch--light); opacity: 0.8; cursor: pointer;
+font-family: 'JetBrains Mono', monospace; transition: opacity 0.3s ease;
+}
+.nav_main.scrolled .nav_link { color: var(--swatch--dark); }
+.nav_link:hover { opacity: 1; }
+.nav_cart_btn {
+position: relative; display: flex; align-items: center; gap: 0.25rem;
+color: var(--swatch--light); cursor: pointer;
+}
+.nav_main.scrolled .nav_cart_btn { color: var(--swatch--dark); }
+.nav_cart_count {
+position: absolute; top: -6px; right: -8px;
+width: 16px; height: 16px; border-radius: 50%;
+background: var(--swatch--brand); color: var(--swatch--dark-secondary);
+font-size: 0.6rem; display: flex; align-items: center; justify-content: center;
+font-weight: 600;
+}
+@media (max-width: 767px) {
+.nav_links .nav_link { display: none; }
+.nav_top { font-size: 0.65rem; padding: 0.4rem var(--padding-horizontal--main); }
+.nav_main { top: 1.6rem; padding: 0.75rem var(--padding-horizontal--main); }
+.nav_logo { font-size: 1.2rem; }
+}
+/* Hero */
+.hero {
+position: relative; height: 100vh; min-height: 700px;
+display: flex; flex-direction: column; overflow: hidden;
+background: var(--swatch--dark);
+}
+.hero_bg { position: absolute; inset: 0; z-index: 0; }
+.hero_bg img { width: 100%; height: 100%; object-fit: cover; }
+.hero_bg_overlay {
+position: absolute; inset: 0;
+background: linear-gradient(to top, rgba(16,51,48,0.5) 0%, rgba(16,51,48,0.15) 50%, rgba(16,51,48,0.3) 100%);
+z-index: 1;
+}
+.hero_logo {
+position: relative; z-index: 2;
+flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center;
+padding: 6rem var(--padding-horizontal--main) 2rem;
+text-align: center; color: var(--swatch--light);
+}
+.hero_logo h1 {
+font-size: clamp(2.5rem, 6vw, 5rem); letter-spacing: 0.2em;
+margin-bottom: 0.5rem;
+}
+.hero_logo p {
+font-size: clamp(0.7rem, 1.2vw, 0.9rem); letter-spacing: 0.25em;
+opacity: 0.8; font-family: 'JetBrains Mono', monospace; text-transform: uppercase;
+}
+.hero_btns_wrap {
+display: flex; gap: 1rem; margin-top: 2rem; flex-wrap: wrap; justify-content: center;
+}
+.hero_btns_wrap .btn { color: var(--swatch--light); }
+.hero_btns_wrap .btn-primary { background: var(--swatch--light); color: var(--swatch--dark); }
+.hero_btns_wrap .btn-primary .btn-inner { border-color: var(--swatch--light); }
+.hero_btns_wrap .btn-secondary { border-color: rgba(255,255,255,0.3); }
+.hero_btns_wrap .btn-secondary:hover { background: var(--swatch--brand); color: var(--swatch--brand-text); border-color: var(--swatch--brand); }
+.hero_bottom {
+position: relative; z-index: 2;
+padding: 1.5rem var(--padding-horizontal--main); margin-top: auto;
+background: linear-gradient(to top, rgba(16,51,48,0.6), transparent);
+}
+.hero_bottom_max {
+max-width: var(--max-width--main); margin: 0 auto;
+display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem;
+}
+.hero_info { display: flex; align-items: center; gap: 1.5rem; color: var(--swatch--light); font-size: 0.85rem; }
+.hero_info_divider { width: 1px; height: 1.5rem; background: var(--swatch--light); opacity: 0.3; }
+.hero_info a:hover { text-decoration: underline; }
+@media (max-width: 767px) {
+.hero { min-height: 600px; }
+.hero_logo { padding: 5rem var(--padding-horizontal--main) 1.5rem; }
+.hero_bottom { padding: 1rem var(--padding-horizontal--main); }
+.hero_info { font-size: 0.75rem; gap: 0.75rem; flex-wrap: wrap; }
+.hero_btns_wrap .btn { font-size: 0.75rem; }
+.hero_btns_wrap .btn .btn-inner { padding: 0.5rem 1rem; }
+}
+/* Menu Accordion */
+.menu_card_wrap { border-top: 1px solid var(--swatch--light-secondary); }
 .menu_card_wrap:last-child { border-bottom: 1px solid var(--swatch--light-secondary); }
 .menu_card_trigger {
 display: flex; align-items: center; justify-content: space-between;
@@ -130,10 +234,7 @@ width: 100%; padding: 1.5rem 0;
 font-family: 'Playfair Display', serif; font-size: 1.5rem;
 letter-spacing: -0.02em; text-align: left; cursor: pointer;
 }
-.menu_card_icon {
-font-size: 1.5rem; transition: transform 0.3s ease;
-font-family: 'Work Sans', sans-serif; font-weight: 300;
-}
+.menu_card_icon { font-size: 1.5rem; transition: transform 0.3s ease; font-family: 'Work Sans', sans-serif; font-weight: 300; }
 .menu_card_checkbox { display: none; }
 .menu_card_checkbox:checked + .menu_card_trigger .menu_card_icon { transform: rotate(45deg); }
 .menu_card_content_wrap {
@@ -143,99 +244,27 @@ transition: grid-template-rows 0.4s ease;
 .menu_card_checkbox:checked ~ .menu_card_content_wrap { grid-template-rows: 1fr; }
 .menu_card_content { overflow: hidden; }
 .menu_card_inner { padding-bottom: 2rem; }
+.menu_grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: start; }
+@media (max-width: 767px) { .menu_grid { grid-template-columns: 1fr; gap: 1.5rem; } }
+.menu_grid_img { width: 100%; aspect-ratio: 4/3; object-fit: cover; border: 1px solid var(--swatch--light-secondary); }
 .menu_item {
 display: flex; align-items: baseline; gap: 0.5rem;
-padding: 0.75rem 0;
+padding: 0.75rem 0; border-bottom: 1px solid var(--swatch--light-secondary);
 }
-.menu_item_name {
-font-size: 1rem; font-weight: 500; white-space: nowrap;
-}
-.menu_item_dots {
-flex: 1; min-width: 20px; height: 1px;
-background: repeating-linear-gradient(
-90deg, var(--swatch--dark) 0, var(--swatch--dark) 4px,
-transparent 4px, transparent 8px
-);
-opacity: 0.2; align-self: center;
-}
-.menu_item_price {
-font-family: 'JetBrains Mono', monospace;
-font-size: 0.9rem; white-space: nowrap;
-}
-.menu_item_desc {
-font-size: 0.85rem; color: var(--swatch--dark); opacity: 0.7;
-padding-left: 0.5rem; font-family: 'Work Sans', sans-serif;
-}
-.menu_item_top { display: flex; align-items: baseline; gap: 0.5rem; }
-.hero {
-position: relative; height: 100vh; min-height: 600px;
-display: flex; flex-direction: column; overflow: hidden;
-background: var(--swatch--dark);
-}
-.hero_bg {
-position: absolute; inset: 0; z-index: 0;
-}
-.hero_bg video, .hero_bg img {
-width: 100%; height: 100%; object-fit: cover;
-}
-.hero_bg_overlay {
-position: absolute; inset: 0;
-background: linear-gradient(to top, rgba(16,51,48,0.4) 0%, transparent 50%);
-z-index: 1;
-}
-.hero_top {
-position: relative; z-index: 2;
-display: flex; align-items: center; justify-content: space-between;
-padding: 1rem var(--padding-horizontal--main);
-font-size: 0.8rem; color: var(--swatch--light);
-}
-.hero_top_max {
-max-width: var(--max-width--main); margin: 0 auto; width: 100%;
-display: flex; align-items: center; justify-content: space-between;
-}
-.hero_hours { opacity: 0.9; }
-.hero_logo {
-position: relative; z-index: 2;
-flex: 1; display: flex; align-items: center; justify-content: center;
-padding: 0 var(--padding-horizontal--main);
-}
-.hero_logo_svg { width: min(80%, 500px); height: auto; }
-.hero_bottom {
-position: relative; z-index: 2;
-padding: 1.5rem var(--padding-horizontal--main);
-margin-top: auto;
-}
-.hero_bottom_max {
-max-width: var(--max-width--main); margin: 0 auto;
-display: flex; align-items: center; justify-content: space-between;
-flex-wrap: wrap; gap: 1rem;
-}
-.hero_info { display: flex; align-items: center; gap: 1.5rem; color: var(--swatch--light); font-size: 0.9rem; }
-.hero_info_divider { width: 1px; height: 1.5rem; background: var(--swatch--light); opacity: 0.3; }
-.hero_info a:hover { text-decoration: underline; }
-.hero_btns { display: flex; gap: 1rem; flex-wrap: wrap; }
-.hero_btns .btn { color: var(--swatch--light); }
-.hero_btns .btn-primary { background: var(--swatch--light); color: var(--swatch--dark); }
-.hero_btns .btn-primary .btn-inner { border-color: var(--swatch--light); }
-.hero_btns .btn-secondary { border-color: rgba(255,255,255,0.3); color: var(--swatch--light); }
-.hero_btns .btn-secondary:hover { background: var(--swatch--brand); color: var(--swatch--brand-text); border-color: var(--swatch--brand); }
-.grid { display: grid; gap: var(--grid-gap--main); }
-.grid-2 { grid-template-columns: repeat(2, 1fr); }
-.grid-3 { grid-template-columns: repeat(3, 1fr); }
-@media (max-width: 767px) {
-.grid-2, .grid-3 { grid-template-columns: 1fr; }
-.hero_top { padding: 0.75rem var(--padding-horizontal--main); font-size: 0.7rem; }
-.hero_bottom { padding: 1rem var(--padding-horizontal--main); }
-.hero_btns { width: 100%; }
-.hero_btns .btn { flex: 1; min-width: 0; }
-.hero_info { font-size: 0.8rem; gap: 1rem; }
-}
-.marquee_img_item { flex-shrink: 0; width: 300px; height: 200px; margin-right: 1rem; overflow: hidden; }
-.marquee_img_item img { width: 100%; height: 100%; object-fit: cover; }
-.marquee_img_animate { animation: scroll 25s linear infinite; display: flex; }
-.footer {
-padding: 4rem 0; border-top: 1px solid var(--swatch--light-secondary);
-}
+.menu_item:last-child { border-bottom: 0; }
+.menu_item_top { display: flex; align-items: baseline; gap: 0.5rem; min-width: 0; }
+.menu_item_name { font-size: 1rem; font-weight: 500; white-space: nowrap; }
+.menu_item_dots { flex: 1; min-width: 20px; height: 1px; background: repeating-linear-gradient(90deg, var(--swatch--dark) 0, var(--swatch--dark) 4px, transparent 4px, transparent 8px); opacity: 0.2; align-self: center; }
+.menu_item_price { font-family: 'JetBrains Mono', monospace; font-size: 0.9rem; white-space: nowrap; }
+.menu_item_desc { font-size: 0.85rem; opacity: 0.7; padding-left: 0.5rem; }
+.menu_note { text-align: center; margin-top: 2rem; font-size: 0.85rem; opacity: 0.6; font-family: 'JetBrains Mono', monospace; }
+/* About */
+.about_section { background: var(--swatch--dark-secondary); color: var(--swatch--light); }
+.about_text { max-width: 40rem; margin: 0 auto; text-align: center; }
+.about_text p { margin-top: 1.5rem; font-size: 1.05rem; line-height: 1.7; opacity: 0.85; }
+.about_text h2 { margin-bottom: 1rem; }
+/* Footer */
+.footer { padding: 4rem 0; border-top: 1px solid var(--swatch--light-secondary); }
 .footer_inner {
 max-width: var(--max-width--main); margin: 0 auto;
 padding: 0 var(--padding-horizontal--main);
@@ -259,55 +288,117 @@ border-top: 1px solid var(--swatch--light-secondary); margin-top: 2rem;
 }
 .scroll-top { display: flex; align-items: center; gap: 0.5rem; font-size: 0.8rem; }
 .scroll-top:hover { text-decoration: underline; }
-.about_text { max-width: 40rem; margin: 0 auto; text-align: center; }
-.about_text p { margin-top: 1.5rem; font-size: 1.05rem; line-height: 1.7; opacity: 0.85; }
-.about_text h2 { margin-bottom: 1rem; }
-.hours_bar {
-background: var(--swatch--dark-secondary); color: var(--swatch--light);
-text-align: center; padding: 0.5rem 1rem; font-size: 0.8rem;
-font-family: 'JetBrains Mono', monospace; letter-spacing: 0.05em;
-}
+/* Preloader */
 .preloader {
 display: none; position: fixed; inset: 0; z-index: 9999;
 background: var(--swatch--light); color: var(--swatch--dark);
+flex-direction: column; align-items: center; justify-content: center;
 }
-.show-loader .preloader { display: flex; align-items: center; justify-content: center; }
-.preloader_svg { width: 20rem; max-width: 80%; }
-.menu_note {
-text-align: center; margin-top: 2rem; font-size: 0.85rem; opacity: 0.6;
-font-family: 'JetBrains Mono', monospace;
+.show-loader .preloader { display: flex; }
+.preloader_svg { margin-bottom: 1rem; }
+/* Cart Drawer */
+.cart_overlay {
+position: fixed; inset: 0; z-index: 200;
+background: rgba(0,0,0,0.4); backdrop-filter: blur(4px);
+opacity: 0; pointer-events: none; transition: opacity 0.3s ease;
 }
+.cart_overlay.open { opacity: 1; pointer-events: all; }
+.cart_drawer {
+position: fixed; top: 0; right: 0; width: 100%; max-width: 420px; height: 100vh;
+z-index: 201; background: var(--swatch--light);
+transform: translateX(100%); transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+display: flex; flex-direction: column;
+}
+.cart_drawer.open { transform: translateX(0); }
+.cart_header {
+padding: 1.5rem; border-bottom: 1px solid var(--swatch--light-secondary);
+display: flex; justify-content: space-between; align-items: center;
+background: var(--swatch--dark); color: var(--swatch--light);
+}
+.cart_header h3 { font-family: 'Playfair Display', serif; font-size: 1.2rem; letter-spacing: 0; }
+.cart_close { font-size: 1.5rem; cursor: pointer; opacity: 0.8; }
+.cart_close:hover { opacity: 1; }
+.cart_body { flex: 1; overflow-y: auto; padding: 1.5rem; }
+.cart_empty { text-align: center; padding: 3rem 0; opacity: 0.5; }
+.cart_empty p { margin-top: 0.5rem; font-size: 0.9rem; }
+.cart_item {
+display: flex; gap: 1rem; align-items: center;
+padding: 1rem 0; border-bottom: 1px solid var(--swatch--light-secondary);
+}
+.cart_item_img { width: 60px; height: 60px; object-fit: cover; border: 1px solid var(--swatch--light-secondary); flex-shrink: 0; }
+.cart_item_info { flex: 1; }
+.cart_item_name { font-weight: 500; font-size: 0.95rem; }
+.cart_item_qty { font-size: 0.8rem; opacity: 0.6; margin-top: 0.2rem; }
+.cart_item_price { font-family: 'JetBrains Mono', monospace; font-size: 0.9rem; white-space: nowrap; }
+.cart_footer {
+padding: 1.5rem; border-top: 1px solid var(--swatch--light-secondary);
+background: var(--swatch--light);
+}
+.cart_total { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; }
+.cart_total_price { font-family: 'Playfair Display', serif; font-size: 1.3rem; }
+.cart_checkout {
+width: 100%; padding: 1rem; background: var(--swatch--dark); color: var(--swatch--light);
+font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 500;
+}
+.cart_checkout:hover { opacity: 0.9; }
+/* Mobile cart fab */
+.cart_fab {
+position: fixed; bottom: 1.5rem; right: 1.5rem; z-index: 50;
+width: 56px; height: 56px; border-radius: 50%;
+background: var(--swatch--dark); color: var(--swatch--light);
+display: none; align-items: center; justify-content: center;
+box-shadow: 0 4px 20px rgba(16,51,48,0.25);
+cursor: pointer; font-size: 1.3rem;
+}
+.cart_fab_count {
+position: absolute; top: -4px; right: -4px;
+width: 22px; height: 22px; border-radius: 50%;
+background: var(--swatch--brand); color: var(--swatch--dark-secondary);
+font-size: 0.7rem; display: flex; align-items: center; justify-content: center;
+font-weight: 700;
+}
+@media (max-width: 767px) { .cart_fab { display: flex; } }
 </style>
 </head>
-<body>
+<body class="show-loader">
 <div class="preloader">
 <div class="preloader_svg">
-<svg viewBox="0 0 400 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-<text x="50%" y="55%" dominant-baseline="middle" text-anchor="middle" font-family="'Playfair Display', serif" font-size="36" fill="#13a7b2" letter-spacing="4">Le Petit Bleu</text>
+<svg viewBox="0 0 300 60" width="300" height="60" fill="none">
+<text x="50%" y="55%" dominant-baseline="middle" text-anchor="middle" font-family="'Playfair Display', serif" font-size="32" fill="#13a7b2" letter-spacing="8">KIKA</text>
 </svg>
 </div>
+<p style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase; opacity: 0.6;">Artisan Egyptian Bakery</p>
 </div>
-<div class="hours_bar">We're open! 7:00 AM – 7:00 PM</div>
+<div class="nav_top">
+<span>We're open! 7:00 AM – 7:00 PM • Online Ordering • Delivery Across Cairo</span>
+</div>
+<nav class="nav_main" id="navbar">
+<div class="nav_inner">
+<div class="nav_logo">Kika</div>
+<div class="nav_links">
+<span class="nav_link" onclick="document.getElementById('menu').scrollIntoView({behavior:'smooth'})">Menu</span>
+<span class="nav_link" onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'})">About</span>
+<span class="nav_link" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Contact</span>
+<a class="nav_link" href="#">Order Online</a>
+<div class="nav_cart_btn" onclick="toggleCart()">
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+<span class="nav_cart_count" id="nav-cart-count">0</span>
+</div>
+</div>
+</div>
+</nav>
 <section class="hero">
 <div class="hero_bg">
-<img alt="Cafe interior" src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=1600&q=80"/>
+<img alt="Egyptian artisan breads" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDRAN13D_FpzF0sxndQz0g9Mhv_gRDpUdu5erbswxXrG4sTpkYCoK6oJ9x057CvQC3-nYnllcHw1UmZQtyfCPP0CRbC3GDeVKO1GpsnqaK9d2AyMuxKk51BI8n2pEjeKLbIvyQ6CJ-Emzoe1K2McVrocNsRaB3uP9UtF7mFfiCvTnoam_iDMzbgz2Zmrt8f9KXydp0-RUTltjyEmMoXb_MxBURklPxWA-oEz8ET8tx1zm1rkJmrYK_okg"/>
 </div>
 <div class="hero_bg_overlay"></div>
-<div class="hero_top">
-<div class="hero_top_max">
-<div class="hero_hours">7:00 AM – 7:00 PM</div>
-<button onclick="document.getElementById('menu').scrollIntoView({behavior:'smooth'})">Menu</button>
-<button onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'})">About</button>
-<button onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Contact</button>
-</div>
-</div>
 <div class="hero_logo">
-<a class="hero_logo_svg" href="#">
-<svg viewBox="0 0 500 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-<text x="50%" y="45%" dominant-baseline="middle" text-anchor="middle" font-family="'Playfair Display', serif" font-size="48" fill="#fcfbf7" letter-spacing="6">Le Petit Bleu</text>
-<text x="50%" y="70%" dominant-baseline="middle" text-anchor="middle" font-family="'Work Sans', sans-serif" font-size="14" fill="#fcfbf7" letter-spacing="8" opacity="0.8">A BAKERY BY COMMANDER'S PALACE</text>
-</svg>
-</a>
+<h1>KIKA</h1>
+<p>Artisan Egyptian Bakery</p>
+<div class="hero_btns_wrap">
+<a class="btn btn-primary" href="#menu"><span class="btn-inner">Order Online</span></a>
+<a class="btn btn-secondary" href="#menu"><span class="btn-inner">View Menu</span></a>
+</div>
 </div>
 <div class="hero_bottom">
 <div class="hero_bottom_max">
@@ -316,33 +407,32 @@ font-family: 'JetBrains Mono', monospace;
 <div class="hero_info_divider"></div>
 <span>7:00 AM – 7:00 PM</span>
 <div class="hero_info_divider"></div>
-<a href="https://maps.app.goo.gl/kTRU5Eg9iHxrS6gJ9" target="_blank">1427 Washington Ave, Cairo</a>
+<span>Delivery Across Cairo</span>
 </div>
-<div class="hero_btns">
-<a class="btn btn-primary" href="#"><span class="btn-inner">Order Online</span></a>
-<a class="btn btn-secondary" href="#"><span class="btn-inner">Order Catering</span></a>
+<div class="hero_info">
+<a class="btn btn-primary" href="#menu" style="padding: 0.6rem 1.5rem; font-size: 0.7rem; letter-spacing: 0.1em;"><span class="btn-inner" style="padding: 0.4rem 0.8rem;">Order Now</span></a>
 </div>
 </div>
 </div>
 </section>
 <div class="marquee_wrap">
 <div class="marquee_inner marquee_animate">
-<span class="marquee_item">Order Online & Pickup Available</span>
+<span class="marquee_item">Online Only — Delivery Across Cairo</span>
 <span class="marquee_item">Freshly Baked Every Morning</span>
 <span class="marquee_item">Traditional Egyptian Flavors</span>
 <span class="marquee_item">Heritage Grains & Artisanal Techniques</span>
+<span class="marquee_item">Order Online & We Deliver</span>
 <span class="marquee_item">Online Only — Delivery Across Cairo</span>
-<span class="marquee_item">Order Online & Pickup Available</span>
 <span class="marquee_item">Freshly Baked Every Morning</span>
 <span class="marquee_item">Traditional Egyptian Flavors</span>
 <span class="marquee_item">Heritage Grains & Artisanal Techniques</span>
-<span class="marquee_item">Online Only — Delivery Across Cairo</span>
+<span class="marquee_item">Order Online & We Deliver</span>
 </div>
 </div>
 <section class="section" id="menu">
 <div class="container">
 <h2 style="margin-bottom: 0.5rem;">Menu</h2>
-<p class="text-small" style="opacity:0.6; margin-bottom: 3rem; font-family: 'JetBrains Mono', monospace; letter-spacing: 0.05em; text-transform: uppercase;">Artisan Selections</p>
+<p class="text-mono" style="margin-bottom: 3rem;">Artisan Selections</p>
 <div class="menu_card_wrap">
 <input type="checkbox" class="menu_card_checkbox" id="menu-1"/>
 <label class="menu_card_trigger" for="menu-1">
@@ -352,6 +442,11 @@ font-family: 'JetBrains Mono', monospace;
 <div class="menu_card_content_wrap">
 <div class="menu_card_content">
 <div class="menu_card_inner">
+<div class="menu_grid">
+<div>
+<img class="menu_grid_img" alt="Fresh Egyptian Breads" src="https://lh3.googleusercontent.com/aida/AP1WRLsw_tCgYBXlFCAu263cC6Gpq33-gg6oY-F05zcD6ve0gukAouNZVHUVtH8K1TdHKyq3DB5fQY_3N4uz4amqNc7csUFpx7uuLa6I50maPV3MrBNFdynCgKw0VZJzwYulw-IVEPKxO98rCl_ecs3zN28RUEEj6ad4WJ73KbvDWZMa52mD_upJ7xStbm7YZ8xHK_bwoU5z1eLLgUOpXMK0vvOhyvf38kReyHsMWF5bv682kL_ObDonBCu-1-pI"/>
+</div>
+<div>
 <div class="menu_item">
 <div class="menu_item_top">
 <span class="menu_item_name">Feteer Meshaltet</span>
@@ -388,6 +483,8 @@ font-family: 'JetBrains Mono', monospace;
 </div>
 </div>
 </div>
+</div>
+</div>
 <div class="menu_card_wrap">
 <input type="checkbox" class="menu_card_checkbox" id="menu-2"/>
 <label class="menu_card_trigger" for="menu-2">
@@ -397,6 +494,11 @@ font-family: 'JetBrains Mono', monospace;
 <div class="menu_card_content_wrap">
 <div class="menu_card_content">
 <div class="menu_card_inner">
+<div class="menu_grid">
+<div class="menu_grid_order2">
+<img class="menu_grid_img" alt="Sweet Egyptian Pastries" src="https://lh3.googleusercontent.com/aida/AP1WRLsHLhYXsrlO-kmoqqJnnOmXWMrvX4mdZqIHhX3T9FnftHYpN6Hj7BKYG8Owg0O574wJrx0K_cTw0M_ayaOYzTqzXfNLjozInfC7nbdpDwTDpPt3yUavzI9iJDs3bYGlkYFIjTuQohG-VYbfLY6K-RT-uJHlShISP_5o2PlVpSVkDnJfK87QddAs_jvASIltWD5-Lj4aP7pO5oDjsxLB3RqDk_NNQPRY48SHPHdUCuEsoI_FB4y-tHxH5zbI"/>
+</div>
+<div>
 <div class="menu_item">
 <div class="menu_item_top">
 <span class="menu_item_name">Basbousa Croissant</span>
@@ -433,6 +535,8 @@ font-family: 'JetBrains Mono', monospace;
 </div>
 </div>
 </div>
+</div>
+</div>
 <div class="menu_card_wrap">
 <input type="checkbox" class="menu_card_checkbox" id="menu-3"/>
 <label class="menu_card_trigger" for="menu-3">
@@ -442,6 +546,11 @@ font-family: 'JetBrains Mono', monospace;
 <div class="menu_card_content_wrap">
 <div class="menu_card_content">
 <div class="menu_card_inner">
+<div class="menu_grid">
+<div>
+<img class="menu_grid_img" alt="Savory Egyptian Treats" src="https://lh3.googleusercontent.com/aida/AP1WRLtIYrCTdOaWQmVxPbHr69AAKL8NSg64qj3CbcdZGczWrJKzQ0vd0wbqEjNoxFo03-U7Nonl-sjczZRyVCZlyWWaSQ73DKaCDyPTSL0uCAW8lbmz_whtlfwKpNZoQCQXy7Ritw7UG3JqOm1F19He-btR5tcGmfHemYLQ-3tRe10W6x2KtnSoncddPmKXKRdtJLakZmTRFXgYVpN8cZX42ggz9RYyoxI_UXfRGEMw85vp3FrS1PWo59R9tZs"/>
+</div>
+<div>
 <div class="menu_item">
 <div class="menu_item_top">
 <span class="menu_item_name">Spiced Zaatar Twist</span>
@@ -470,6 +579,8 @@ font-family: 'JetBrains Mono', monospace;
 </div>
 </div>
 </div>
+</div>
+</div>
 <div class="menu_card_wrap">
 <input type="checkbox" class="menu_card_checkbox" id="menu-4"/>
 <label class="menu_card_trigger" for="menu-4">
@@ -479,6 +590,11 @@ font-family: 'JetBrains Mono', monospace;
 <div class="menu_card_content_wrap">
 <div class="menu_card_content">
 <div class="menu_card_inner">
+<div class="menu_grid">
+<div class="menu_grid_order2">
+<img class="menu_grid_img" alt="Artisanal Drinks" src="https://lh3.googleusercontent.com/aida/AP1WRLu1GVIQDvdmF5W15A-tpWp5375iG55BbBHaBXc6we967sb5QYSl2PDYqO3lS8y6ktM33G7jn7Cahz9fZHfEaYoI5hgSdYzGBnaXoyiOBIMmt2BQNp1bRP5VeaW2zZN-QhS9dJaPnQCGNVVNdz-aAegWNTSqKacrLo3f6vvCvFkUQfEY_WchROPxD8vSjMdQeN54fuFee9qSB00hmM-ZMMqH6SRdnWc7cy4DBIUZpwDYBhXevgqCxhyfZo-I"/>
+</div>
+<div>
 <div class="menu_item">
 <div class="menu_item_top">
 <span class="menu_item_name">Egyptian Coffee</span>
@@ -515,14 +631,16 @@ font-family: 'JetBrains Mono', monospace;
 </div>
 </div>
 </div>
-<p class="menu_note">All items baked fresh daily. Delivery across Greater Cairo 7:00 AM – 7:00 PM.</p>
+</div>
+</div>
+<p class="menu_note">All items baked fresh daily. Order online for delivery across Greater Cairo.</p>
 </div>
 </section>
-<section class="section-small" style="background: var(--swatch--dark-secondary); color: var(--swatch--light);" id="about">
+<section class="section-small about_section" id="about">
 <div class="container about_text">
-<h2>Bonjour, y'all!</h2>
-<p>We are the little online storefront on Washington Avenue — you know, that unassuming little shop a few doors down from Commander's Palace? But see, when you walk through these shiny lacquered doors, you're in for something bold. The smells of cappuccinos and fresh croissants fill the air, and you might just feel like you're stepping into a bustling café in Paris.</p>
-<p>From morning 'til evening, think of Le Petit Bleu as your little slice of Paris right here in Cairo. Now of course we serve everything with a New Haute Egyptian-twist, so you'll be able to grab our Egyptian Coffee with a Basbousa Croissant for breakfast, or stop in for lunch — no reservations or dress code required.</p>
+<h2>Bonjour, y'all! Ahlan wa sahlan.</h2>
+<p>We are Kika — an online artisanal bakery reimagining Egyptian tradition with a modern boutique elegance. Every morning, we craft small batches of heritage breads, sweet pastries, and savory delights using time-honored techniques and the finest Egyptian grains.</p>
+<p>From our signature Feteer Meshaltet to slow-fermented sourdough breads made with ancient heritage grains, every item is crafted for a New Haute Egyptian-twist. We are strictly online, focusing all our artistry on delivering the perfect crunch to your doorstep across Cairo. No reservations or dress code required—just your love for fine dough.</p>
 </div>
 </section>
 <div class="marquee_wrap" style="border-top: 0;">
@@ -540,7 +658,7 @@ font-family: 'JetBrains Mono', monospace;
 <footer class="footer" id="contact">
 <div class="footer_inner">
 <div class="footer_contact">
-<a class="text-large" href="mailto:hello@lepetitbleu.com">HELLO@LEPETITBLEU.COM</a>
+<a class="text-large" href="mailto:hello@kika-bakery.com">HELLO@KIKA-BAKERY.COM</a>
 <a class="text-small text-mono" href="tel:+201234567890">+20 123 456 7890</a>
 </div>
 <div class="footer_social">
@@ -549,22 +667,84 @@ font-family: 'JetBrains Mono', monospace;
 </div>
 </div>
 <div class="footer_bottom">
-<span>© 2024 Le Petit Bleu. A concept by Commander's Palace.</span>
+<span>© 2024 Kika Artisan Bakery. Online Only — Delivery Across Cairo.</span>
 <button class="scroll-top text-mono" onclick="window.scrollTo({top:0,behavior:'smooth'})">
 <span>↑</span> Scroll to Top
 </button>
 </div>
 </footer>
+<div class="cart_overlay" id="cart-overlay" onclick="toggleCart()"></div>
+<div class="cart_drawer" id="cart-drawer">
+<div class="cart_header">
+<h3>Your Basket</h3>
+<span class="cart_close" onclick="toggleCart()">✕</span>
+</div>
+<div class="cart_body" id="cart-body">
+<div class="cart_empty" id="cart-empty">
+<svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--swatch--dark-secondary)" stroke-width="1" opacity="0.3"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+<p>Your basket is empty.</p>
+</div>
+<div id="cart-items-list"></div>
+</div>
+<div class="cart_footer" id="cart-footer" style="display:none;">
+<div class="cart_total">
+<span>Subtotal</span>
+<span class="cart_total_price" id="cart-total">EGP 0</span>
+</div>
+<button class="cart_checkout">Checkout Now</button>
+</div>
+</div>
+<div class="cart_fab" id="cart-fab" onclick="toggleCart()">
+<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+<span class="cart_fab_count" id="fab-count">0</span>
+</div>
 <script>
 if (sessionStorage.getItem('visited') == null) {
 document.documentElement.classList.add('show-loader');
 setTimeout(() => {
 document.documentElement.classList.remove('show-loader');
 }, 1500);
+} else {
+document.documentElement.classList.remove('show-loader');
 }
 sessionStorage.setItem('visited', 'true');
-document.querySelector('.preloader').addEventListener('click', () => {
+document.querySelector('.preloader')?.addEventListener('click', () => {
 document.documentElement.classList.remove('show-loader');
+});
+let cartCount = 0;
+function toggleCart() {
+const drawer = document.getElementById('cart-drawer');
+const overlay = document.getElementById('cart-overlay');
+drawer.classList.toggle('open');
+overlay.classList.toggle('open');
+}
+document.querySelectorAll('.menu_item .menu_item_name').forEach((item, idx) => {
+const priceEl = item.closest('.menu_item').querySelector('.menu_item_price');
+item.style.cursor = 'pointer';
+item.addEventListener('click', function(e) {
+e.stopPropagation();
+cartCount++;
+const name = this.textContent.trim();
+const price = priceEl ? priceEl.textContent.trim() : 'EGP 0';
+document.getElementById('nav-cart-count').textContent = cartCount;
+document.getElementById('fab-count').textContent = cartCount;
+document.getElementById('cart-empty').style.display = 'none';
+document.getElementById('cart-footer').style.display = 'block';
+const list = document.getElementById('cart-items-list');
+const existing = Array.from(list.children).find(el => el.dataset.name === name);
+if (existing) {
+const qtyEl = existing.querySelector('.cart_item_qty');
+let qty = parseInt(qtyEl.textContent.replace('Qty: ','')) + 1;
+qtyEl.textContent = 'Qty: ' + qty;
+} else {
+const div = document.createElement('div');
+div.className = 'cart_item';
+div.dataset.name = name;
+div.innerHTML = '<div class="cart_item_img" style="background: var(--swatch--light-secondary);"></div><div class="cart_item_info"><div class="cart_item_name">' + name + '</div><div class="cart_item_qty">Qty: 1</div></div><span class="cart_item_price">' + price + '</span>';
+list.appendChild(div);
+}
+document.getElementById('cart-total').textContent = 'EGP ' + (cartCount * 120);
+});
 });
 document.querySelectorAll('.menu_card_checkbox').forEach(cb => {
 cb.addEventListener('change', function() {
@@ -574,6 +754,14 @@ if (other !== this) other.checked = false;
 });
 }
 });
+});
+window.addEventListener('scroll', () => {
+const nav = document.getElementById('navbar');
+if (window.scrollY > 50) {
+nav.classList.add('scrolled');
+} else {
+nav.classList.remove('scrolled');
+}
 });
 </script>
 </body>
