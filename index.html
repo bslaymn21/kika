@@ -290,12 +290,37 @@ border-top: 1px solid var(--swatch--light-secondary); margin-top: 2rem;
 .scroll-top:hover { text-decoration: underline; }
 /* Preloader */
 .preloader {
-display: none; position: fixed; inset: 0; z-index: 9999;
+position: fixed; inset: 0; z-index: 9999;
 background: var(--swatch--light); color: var(--swatch--dark);
-flex-direction: column; align-items: center; justify-content: center;
+display: flex; flex-direction: column; align-items: center; justify-content: center;
+opacity: 0; pointer-events: none;
+transition: opacity 0.6s ease, transform 0.6s ease;
+transform: scale(0.95);
 }
-.show-loader .preloader { display: flex; }
+.preloader.show {
+opacity: 1; pointer-events: all;
+transform: scale(1);
+}
+.preloader.closing {
+opacity: 0; transform: scale(1.05);
+}
 .preloader_svg { margin-bottom: 1rem; }
+.preloader_svg svg {
+opacity: 0; transform: translateY(20px);
+transition: opacity 0.8s ease 0.3s, transform 0.8s ease 0.3s;
+}
+.preloader.show .preloader_svg svg {
+opacity: 1; transform: translateY(0);
+}
+.preloader_sub {
+font-family: 'JetBrains Mono', monospace;
+font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase;
+opacity: 0; transform: translateY(15px);
+transition: opacity 0.8s ease 0.6s, transform 0.8s ease 0.6s;
+}
+.preloader.show .preloader_sub {
+opacity: 0.6; transform: translateY(0);
+}
 /* Cart Drawer */
 .cart_overlay {
 position: fixed; inset: 0; z-index: 200;
@@ -361,13 +386,13 @@ font-weight: 700;
 </style>
 </head>
 <body>
-<div class="preloader">
+<div class="preloader" id="preloader">
 <div class="preloader_svg">
 <svg viewBox="0 0 300 60" width="300" height="60" fill="none">
 <text x="50%" y="55%" dominant-baseline="middle" text-anchor="middle" font-family="'Playfair Display', serif" font-size="32" fill="#13a7b2" letter-spacing="8">KIKA</text>
 </svg>
 </div>
-<p style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase; opacity: 0.6;">Artisan Egyptian Bakery</p>
+<p class="preloader_sub">Artisan Egyptian Bakery</p>
 </div>
 <div class="nav_top">
 <span>We're open! 7:00 AM – 7:00 PM • Online Ordering • Delivery Across Cairo</span>
@@ -699,18 +724,25 @@ font-weight: 700;
 <span class="cart_fab_count" id="fab-count">0</span>
 </div>
 <script>
-if (sessionStorage.getItem('visited') == null) {
-document.documentElement.classList.add('show-loader');
+const preloader = document.getElementById('preloader');
+function hidePreloader() {
+if (!preloader || preloader.classList.contains('closing')) return;
+preloader.classList.add('closing');
 setTimeout(() => {
-document.documentElement.classList.remove('show-loader');
-}, 1500);
+preloader.classList.remove('show', 'closing');
+}, 600);
+}
+function showPreloader() {
+preloader.classList.add('show');
+}
+if (sessionStorage.getItem('visited') == null) {
+showPreloader();
+setTimeout(hidePreloader, 2200);
 } else {
-document.documentElement.classList.remove('show-loader');
+preloader.classList.remove('show');
 }
 sessionStorage.setItem('visited', 'true');
-document.querySelector('.preloader')?.addEventListener('click', () => {
-document.documentElement.classList.remove('show-loader');
-});
+preloader?.addEventListener('click', hidePreloader);
 let cartCount = 0;
 function toggleCart() {
 const drawer = document.getElementById('cart-drawer');
