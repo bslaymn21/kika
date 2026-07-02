@@ -1,559 +1,579 @@
 <!DOCTYPE html>
-<html class="scroll-smooth" lang="en">
+<html lang="en">
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Lapis Artisan Bakery | Egyptian Tradition Reimagined</title>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
-<script>
-tailwind.config = {
-darkMode: "class",
-theme: {
-extend: {
-colors: {
-"on-secondary": "#ffffff",
-"surface-container-low": "#f6f3f2",
-"on-secondary-fixed-variant": "#474744",
-"primary-fixed-dim": "#6bd5e7",
-"on-tertiary": "#ffffff",
-"surface-variant": "#e5e2e1",
-"primary": "#006672",
-"surface-container-high": "#eae7e7",
-"primary-fixed": "#9cf0ff",
-"secondary-fixed": "#e4e2dd",
-"surface": "#fcf9f8",
-"on-primary-container": "#f7feff",
-"on-tertiary-fixed": "#241a00",
-"error": "#ba1a1a",
-"inverse-surface": "#313030",
-"on-primary-fixed-variant": "#004f58",
-"on-tertiary-fixed-variant": "#574500",
-"tertiary": "#735c00",
-"error-container": "#ffdad6",
-"tertiary-container": "#cca72f",
-"on-error": "#ffffff",
-"surface-dim": "#dcd9d9",
-"primary-container": "#008190",
-"on-secondary-container": "#63635f",
-"on-primary": "#ffffff",
-"outline": "#6d797c",
-"on-tertiary-container": "#4e3d00",
-"secondary-container": "#e1dfdb",
-"surface-bright": "#fcf9f8",
-"on-secondary-fixed": "#1b1c19",
-"surface-container": "#f0eded",
-"on-surface-variant": "#3d494b",
-"on-primary-fixed": "#001f24",
-"tertiary-fixed": "#ffe088",
-"inverse-primary": "#6bd5e7",
-"on-background": "#1c1b1b",
-"outline-variant": "#bdc9cb",
-"surface-container-lowest": "#ffffff",
-"background": "#fcf9f8",
-"secondary": "#5e5e5b",
-"surface-tint": "#006875",
-"on-surface": "#1c1b1b",
-"tertiary-fixed-dim": "#e9c349",
-"inverse-on-surface": "#f3f0ef",
-"on-error-container": "#93000a",
-"surface-container-highest": "#e5e2e1",
-"secondary-fixed-dim": "#c8c6c2"
-},
-borderRadius: {
-DEFAULT: "0.25rem",
-lg: "0.5rem",
-xl: "0.75rem",
-full: "9999px"
-},
-spacing: {
-unit: "4px",
-gutter: "24px",
-"container-max": "1280px",
-"margin-mobile": "20px",
-"stack-sm": "12px",
-"stack-xl": "80px",
-"stack-md": "24px",
-"margin-desktop": "64px",
-"stack-lg": "48px"
-},
-fontFamily: {
-"body-md": ["Work Sans"],
-"headline-md": ["Playfair Display"],
-"headline-lg-mobile": ["Playfair Display"],
-"label-lg": ["Work Sans"],
-"label-sm": ["Work Sans"],
-"headline-sm": ["Playfair Display"],
-"display-lg": ["Playfair Display"],
-"headline-lg": ["Playfair Display"],
-"body-lg": ["Work Sans"]
-},
-fontSize: {
-"body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
-"headline-md": ["32px", {"lineHeight": "1.3", "fontWeight": "500"}],
-"headline-lg-mobile": ["36px", {"lineHeight": "1.2", "fontWeight": "600"}],
-"label-lg": ["14px", {"lineHeight": "1.2", "letterSpacing": "0.1em", "fontWeight": "600"}],
-"label-sm": ["12px", {"lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "500"}],
-"headline-sm": ["24px", {"lineHeight": "1.4", "fontWeight": "500"}],
-"display-lg": ["84px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
-"headline-lg": ["48px", {"lineHeight": "1.2", "fontWeight": "600"}],
-"body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}]
-}
-},
-},
-}
-</script>
+<title>Le Petit Bleu | A café by Commander's Palace</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Work+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
 <style>
-.material-symbols-outlined {
-font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
-display: inline-block;
-vertical-align: middle;
+:root {
+--swatch--light: #fcfbf7;
+--swatch--dark: #13a7b2;
+--swatch--light-secondary: #d6edf0;
+--swatch--dark-secondary: #103330;
+--swatch--brand: #c6fb50;
+--swatch--brand-text: #13a7b2;
+--padding-horizontal--main: 3rem;
+--padding-vertical--main: 7rem;
+--padding-vertical--small: 5rem;
+--padding-vertical--large: 10rem;
+--max-width--main: 90rem;
+--grid-gap--main: 1.5rem;
+--column-count: 12;
 }
-.accordion-content {
-max-height: 0;
-overflow: hidden;
-transition: max-height 0.5s ease-out, opacity 0.3s ease-in;
-opacity: 0;
+@media (max-width: 991px) {
+:root { --padding-horizontal--main: 2rem; --padding-vertical--main: 5rem; --padding-vertical--small: 3.5rem; --padding-vertical--large: 7rem; }
 }
-.accordion-content.active {
-max-height: 2000px;
-opacity: 1;
+@media (max-width: 767px) {
+:root { --padding-horizontal--main: 1rem; --padding-vertical--main: 3.5rem; --padding-vertical--small: 2.5rem; --padding-vertical--large: 5rem; }
 }
-.menu-border {
-border-bottom: 1px solid #006672;
+::selection { background-color: var(--swatch--dark); color: var(--swatch--light); }
+::-moz-selection { background-color: var(--swatch--dark); color: var(--swatch--light); }
+html.lenis { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto; }
+.lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
+.lenis.lenis-stopped { overflow: hidden; }
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+font-family: 'Work Sans', sans-serif;
+font-weight: 400;
+font-size: 16px;
+line-height: 1.5;
+color: var(--swatch--dark);
+background-color: var(--swatch--light);
+-webkit-font-smoothing: antialiased;
+overflow-x: hidden;
 }
-.cart-drawer {
-transform: translateX(100%);
-transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+h1, h2, h3, h4, h5, h6 {
+font-family: 'Playfair Display', 'Times New Roman', serif;
+font-weight: 400;
+line-height: 1.1;
+letter-spacing: -0.03em;
 }
-.cart-drawer.open {
-transform: translateX(0);
+h1 { font-size: clamp(2.5rem, 5vw, 5rem); }
+h2 { font-size: clamp(2rem, 4vw, 4rem); }
+h3 { font-size: clamp(1.5rem, 3vw, 3rem); }
+p { margin: 0; }
+a { color: inherit; text-decoration: none; }
+button { background: none; border: none; cursor: pointer; font-family: inherit; color: inherit; }
+img, video { max-width: 100%; display: block; }
+.container {
+max-width: var(--max-width--main);
+margin: 0 auto;
+padding-left: var(--padding-horizontal--main);
+padding-right: var(--padding-horizontal--main);
 }
-.boutique-line {
-position: relative;
+.section { padding-top: var(--padding-vertical--main); padding-bottom: var(--padding-vertical--main); }
+.section-small { padding-top: var(--padding-vertical--small); padding-bottom: var(--padding-vertical--small); }
+.section-large { padding-top: var(--padding-vertical--large); padding-bottom: var(--padding-vertical--large); }
+.text-serif { font-family: 'Playfair Display', serif; letter-spacing: -0.03em; }
+.text-mono { font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; letter-spacing: 0.05em; text-transform: uppercase; }
+.text-small { font-size: 0.875rem; line-height: 1.5; }
+.text-large { font-size: clamp(1.1rem, 1.5vw, 1.5rem); line-height: 1.3; font-family: 'Playfair Display', serif; letter-spacing: -0.02em; }
+.btn {
+display: inline-flex; align-items: center; justify-content: center;
+font-size: 0.875rem; line-height: 1.2; letter-spacing: 0.1em; text-transform: uppercase;
+font-weight: 500; padding: 0;
+transition: padding 0.175s ease;
 }
-.boutique-line::after {
-content: '';
-position: absolute;
-bottom: -2px;
-left: 0;
-width: 0;
-height: 1px;
-background-color: #006672;
-transition: width 0.3s ease;
+.btn-primary {
+background: var(--swatch--dark); color: var(--swatch--light);
+padding: 1.25rem 2.5rem;
 }
-.boutique-line:hover::after {
-width: 100%;
+.btn-primary:hover { padding: 1.25rem 2.5rem; }
+.btn-primary .btn-inner {
+display: inline-flex; align-items: center; justify-content: center;
+border: 1px solid var(--swatch--dark); padding: 0.75rem 1.5rem;
+transition: padding 0.175s ease;
 }
-@keyframes marquee {
-0% { transform: translateX(0); }
-100% { transform: translateX(-50%); }
+.btn-primary:hover .btn-inner { padding: 0.75rem 1rem; }
+.btn-secondary {
+background: transparent; color: var(--swatch--dark);
+padding: 1.25rem 2.5rem; border: 1px solid var(--swatch--light-secondary);
 }
-.animate-marquee {
-animation: marquee 30s linear infinite;
+.btn-secondary:hover { background: var(--swatch--brand); color: var(--swatch--brand-text); border-color: var(--swatch--brand); }
+.btn-secondary .btn-inner {
+display: inline-flex; align-items: center; justify-content: center;
+padding: 0.75rem 1.5rem; border: 1px solid transparent;
+transition: padding 0.175s ease;
 }
-[dir="rtl"] .cart-drawer {
-transform: translateX(-100%);
+.btn-secondary:hover .btn-inner { padding: 0.75rem 1rem; }
+.marquee_wrap {
+overflow: hidden; padding: 1.5rem 0;
+border-top: 1px solid var(--swatch--light-secondary);
+border-bottom: 1px solid var(--swatch--light-secondary);
 }
-[dir="rtl"] .cart-drawer.open {
-transform: translateX(0);
+.marquee_inner { display: flex; white-space: nowrap; }
+.marquee_item {
+flex-shrink: 0; display: inline-flex; align-items: center;
+padding: 0 2rem; font-size: 1.2rem; font-family: 'Playfair Display', serif;
+letter-spacing: -0.02em; color: var(--swatch--dark);
 }
-[dir="rtl"] .boutique-line::after {
-left: auto;
-right: 0;
+.marquee_item::before {
+content: '•'; margin-right: 2rem; color: var(--swatch--dark); opacity: 0.3;
 }
-.no-scrollbar::-webkit-scrollbar { display: none; }
-.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+.marquee_animate {
+animation: scroll 20s linear infinite;
+}
+@keyframes scroll {
+from { transform: translateX(0); }
+to { transform: translateX(-50%); }
+}
+.marquee-reverse { animation-direction: reverse; }
+.menu_card_wrap {
+border-top: 1px solid var(--swatch--light-secondary);
+}
+.menu_card_wrap:last-child { border-bottom: 1px solid var(--swatch--light-secondary); }
+.menu_card_trigger {
+display: flex; align-items: center; justify-content: space-between;
+width: 100%; padding: 1.5rem 0;
+font-family: 'Playfair Display', serif; font-size: 1.5rem;
+letter-spacing: -0.02em; text-align: left; cursor: pointer;
+}
+.menu_card_icon {
+font-size: 1.5rem; transition: transform 0.3s ease;
+font-family: 'Work Sans', sans-serif; font-weight: 300;
+}
+.menu_card_checkbox { display: none; }
+.menu_card_checkbox:checked + .menu_card_trigger .menu_card_icon { transform: rotate(45deg); }
+.menu_card_content_wrap {
+display: grid; grid-template-rows: 0fr;
+transition: grid-template-rows 0.4s ease;
+}
+.menu_card_checkbox:checked ~ .menu_card_content_wrap { grid-template-rows: 1fr; }
+.menu_card_content { overflow: hidden; }
+.menu_card_inner { padding-bottom: 2rem; }
+.menu_item {
+display: flex; align-items: baseline; gap: 0.5rem;
+padding: 0.75rem 0;
+}
+.menu_item_name {
+font-size: 1rem; font-weight: 500; white-space: nowrap;
+}
+.menu_item_dots {
+flex: 1; min-width: 20px; height: 1px;
+background: repeating-linear-gradient(
+90deg, var(--swatch--dark) 0, var(--swatch--dark) 4px,
+transparent 4px, transparent 8px
+);
+opacity: 0.2; align-self: center;
+}
+.menu_item_price {
+font-family: 'JetBrains Mono', monospace;
+font-size: 0.9rem; white-space: nowrap;
+}
+.menu_item_desc {
+font-size: 0.85rem; color: var(--swatch--dark); opacity: 0.7;
+padding-left: 0.5rem; font-family: 'Work Sans', sans-serif;
+}
+.menu_item_top { display: flex; align-items: baseline; gap: 0.5rem; }
+.hero {
+position: relative; height: 100vh; min-height: 600px;
+display: flex; flex-direction: column; overflow: hidden;
+background: var(--swatch--dark);
+}
+.hero_bg {
+position: absolute; inset: 0; z-index: 0;
+}
+.hero_bg video, .hero_bg img {
+width: 100%; height: 100%; object-fit: cover;
+}
+.hero_bg_overlay {
+position: absolute; inset: 0;
+background: linear-gradient(to top, rgba(16,51,48,0.4) 0%, transparent 50%);
+z-index: 1;
+}
+.hero_top {
+position: relative; z-index: 2;
+display: flex; align-items: center; justify-content: space-between;
+padding: 1rem var(--padding-horizontal--main);
+font-size: 0.8rem; color: var(--swatch--light);
+}
+.hero_top_max {
+max-width: var(--max-width--main); margin: 0 auto; width: 100%;
+display: flex; align-items: center; justify-content: space-between;
+}
+.hero_hours { opacity: 0.9; }
+.hero_logo {
+position: relative; z-index: 2;
+flex: 1; display: flex; align-items: center; justify-content: center;
+padding: 0 var(--padding-horizontal--main);
+}
+.hero_logo_svg { width: min(80%, 500px); height: auto; }
+.hero_bottom {
+position: relative; z-index: 2;
+padding: 1.5rem var(--padding-horizontal--main);
+margin-top: auto;
+}
+.hero_bottom_max {
+max-width: var(--max-width--main); margin: 0 auto;
+display: flex; align-items: center; justify-content: space-between;
+flex-wrap: wrap; gap: 1rem;
+}
+.hero_info { display: flex; align-items: center; gap: 1.5rem; color: var(--swatch--light); font-size: 0.9rem; }
+.hero_info_divider { width: 1px; height: 1.5rem; background: var(--swatch--light); opacity: 0.3; }
+.hero_info a:hover { text-decoration: underline; }
+.hero_btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+.hero_btns .btn { color: var(--swatch--light); }
+.hero_btns .btn-primary { background: var(--swatch--light); color: var(--swatch--dark); }
+.hero_btns .btn-primary .btn-inner { border-color: var(--swatch--light); }
+.hero_btns .btn-secondary { border-color: rgba(255,255,255,0.3); color: var(--swatch--light); }
+.hero_btns .btn-secondary:hover { background: var(--swatch--brand); color: var(--swatch--brand-text); border-color: var(--swatch--brand); }
+.grid { display: grid; gap: var(--grid-gap--main); }
+.grid-2 { grid-template-columns: repeat(2, 1fr); }
+.grid-3 { grid-template-columns: repeat(3, 1fr); }
+@media (max-width: 767px) {
+.grid-2, .grid-3 { grid-template-columns: 1fr; }
+.hero_top { padding: 0.75rem var(--padding-horizontal--main); font-size: 0.7rem; }
+.hero_bottom { padding: 1rem var(--padding-horizontal--main); }
+.hero_btns { width: 100%; }
+.hero_btns .btn { flex: 1; min-width: 0; }
+.hero_info { font-size: 0.8rem; gap: 1rem; }
+}
+.marquee_img_item { flex-shrink: 0; width: 300px; height: 200px; margin-right: 1rem; overflow: hidden; }
+.marquee_img_item img { width: 100%; height: 100%; object-fit: cover; }
+.marquee_img_animate { animation: scroll 25s linear infinite; display: flex; }
+.footer {
+padding: 4rem 0; border-top: 1px solid var(--swatch--light-secondary);
+}
+.footer_inner {
+max-width: var(--max-width--main); margin: 0 auto;
+padding: 0 var(--padding-horizontal--main);
+display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 2rem;
+}
+.footer_contact { display: flex; flex-direction: column; gap: 0.5rem; }
+.footer_contact a:hover { text-decoration: underline; }
+.footer_social { display: flex; gap: 1.5rem; align-items: center; }
+.footer_social a { font-size: 0.875rem; }
+.footer_social a:hover { text-decoration: underline; }
+.footer_bottom {
+max-width: var(--max-width--main); margin: 0 auto;
+padding: 2rem var(--padding-horizontal--main) 0;
+display: flex; justify-content: space-between; align-items: center;
+flex-wrap: wrap; gap: 1rem; font-size: 0.8rem; opacity: 0.6;
+border-top: 1px solid var(--swatch--light-secondary); margin-top: 2rem;
+}
+@media (max-width: 767px) {
+.footer_inner { flex-direction: column; align-items: flex-start; }
+.footer_bottom { flex-direction: column; align-items: flex-start; }
+}
+.scroll-top { display: flex; align-items: center; gap: 0.5rem; font-size: 0.8rem; }
+.scroll-top:hover { text-decoration: underline; }
+.about_text { max-width: 40rem; margin: 0 auto; text-align: center; }
+.about_text p { margin-top: 1.5rem; font-size: 1.05rem; line-height: 1.7; opacity: 0.85; }
+.about_text h2 { margin-bottom: 1rem; }
+.hours_bar {
+background: var(--swatch--dark-secondary); color: var(--swatch--light);
+text-align: center; padding: 0.5rem 1rem; font-size: 0.8rem;
+font-family: 'JetBrains Mono', monospace; letter-spacing: 0.05em;
+}
+.preloader {
+display: none; position: fixed; inset: 0; z-index: 9999;
+background: var(--swatch--light); color: var(--swatch--dark);
+}
+.show-loader .preloader { display: flex; align-items: center; justify-content: center; }
+.preloader_svg { width: 20rem; max-width: 80%; }
+.menu_note {
+text-align: center; margin-top: 2rem; font-size: 0.85rem; opacity: 0.6;
+font-family: 'JetBrains Mono', monospace;
+}
 </style>
 </head>
-<body class="bg-surface text-on-surface font-body-md overflow-x-hidden">
-<header class="fixed top-0 left-0 w-full z-50 bg-surface/90 backdrop-blur-md border-b border-outline-variant">
-<nav class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-4 flex justify-between items-center">
-<div class="flex items-center gap-6">
-<button class="md:hidden text-primary" id="mobile-menu-trigger">
-<span class="material-symbols-outlined">menu</span>
-</button>
-<a class="font-headline-md text-headline-md uppercase tracking-widest text-primary" href="#">Lapis</a>
+<body>
+<div class="preloader">
+<div class="preloader_svg">
+<svg viewBox="0 0 400 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+<text x="50%" y="55%" dominant-baseline="middle" text-anchor="middle" font-family="'Playfair Display', serif" font-size="36" fill="#13a7b2" letter-spacing="4">Le Petit Bleu</text>
+</svg>
 </div>
-<div class="hidden md:flex items-center gap-stack-md">
-<a class="font-label-lg text-label-lg text-on-surface-variant hover:text-primary transition-colors boutique-line" href="#breads">Our Breads</a>
-<a class="font-label-lg text-label-lg text-on-surface-variant hover:text-primary transition-colors boutique-line" href="#pastries">Pastries</a>
-<a class="font-label-lg text-label-lg text-on-surface-variant hover:text-primary transition-colors boutique-line" href="#heritage">Heritage</a>
-<a class="font-label-lg text-label-lg text-on-surface-variant hover:text-primary transition-colors boutique-line" href="#about">Our Story</a>
 </div>
-<div class="flex items-center gap-4">
-<button class="text-primary font-label-lg flex items-center gap-2" id="lang-toggle">
-<span class="material-symbols-outlined">language</span>
-<span id="lang-label">العربية</span>
-</button>
-<button class="relative text-primary p-2 hover:scale-95 transition-transform" onclick="toggleCart()">
-<span class="material-symbols-outlined">shopping_basket</span>
-<span class="absolute -top-1 -right-1 bg-primary text-white text-[10px] w-4 h-4 rounded-full flex items-center justify-center" id="cart-count">0</span>
-</button>
+<div class="hours_bar">We're open! 7:00 AM – 7:00 PM</div>
+<section class="hero">
+<div class="hero_bg">
+<img alt="Cafe interior" src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=1600&q=80"/>
 </div>
-</nav>
-</header>
-<aside class="fixed inset-y-0 left-0 z-[60] w-80 bg-surface border-r border-outline-variant shadow-xl -translate-x-full transition-transform duration-300 p-6 flex flex-col" id="side-nav">
-<div class="flex justify-between items-center mb-stack-lg">
-<span class="font-headline-sm text-headline-sm text-primary">Lapis Bakery</span>
-<button class="text-on-surface-variant" onclick="toggleMobileMenu()">
-<span class="material-symbols-outlined">close</span>
-</button>
+<div class="hero_bg_overlay"></div>
+<div class="hero_top">
+<div class="hero_top_max">
+<div class="hero_hours">7:00 AM – 7:00 PM</div>
+<button onclick="document.getElementById('menu').scrollIntoView({behavior:'smooth'})">Menu</button>
+<button onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'})">About</button>
+<button onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Contact</button>
 </div>
-<div class="flex flex-col gap-4 flex-grow">
-<a class="flex items-center gap-4 bg-primary-container text-on-primary-container rounded-lg p-3" href="#">
-<span class="material-symbols-outlined">storefront</span>
-<span>Shop All</span>
-</a>
-<a class="flex items-center gap-4 text-on-surface-variant p-3 hover:bg-surface-container-high transition-colors rounded-lg" href="#">
-<span class="material-symbols-outlined">bakery_dining</span>
-<span>Boulangerie</span>
-</a>
-<a class="flex items-center gap-4 text-on-surface-variant p-3 hover:bg-surface-container-high transition-colors rounded-lg" href="#">
-<span class="material-symbols-outlined">cake</span>
-<span>Patisserie</span>
-</a>
-<a class="flex items-center gap-4 text-on-surface-variant p-3 hover:bg-surface-container-high transition-colors rounded-lg" href="#">
-<span class="material-symbols-outlined">history</span>
-<span>Our Story</span>
-</a>
-<a class="flex items-center gap-4 text-on-surface-variant p-3 hover:bg-surface-container-high transition-colors rounded-lg" href="#">
-<span class="material-symbols-outlined">mail</span>
-<span>Contact</span>
+</div>
+<div class="hero_logo">
+<a class="hero_logo_svg" href="#">
+<svg viewBox="0 0 500 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+<text x="50%" y="45%" dominant-baseline="middle" text-anchor="middle" font-family="'Playfair Display', serif" font-size="48" fill="#fcfbf7" letter-spacing="6">Le Petit Bleu</text>
+<text x="50%" y="70%" dominant-baseline="middle" text-anchor="middle" font-family="'Work Sans', sans-serif" font-size="14" fill="#fcfbf7" letter-spacing="8" opacity="0.8">A BAKERY BY COMMANDER'S PALACE</text>
+</svg>
 </a>
 </div>
-<div class="mt-auto pt-6 border-t border-outline-variant">
-<button class="w-full bg-primary text-on-primary py-3 rounded uppercase tracking-widest font-label-lg">View Basket</button>
+<div class="hero_bottom">
+<div class="hero_bottom_max">
+<div class="hero_info">
+<span>Open Daily</span>
+<div class="hero_info_divider"></div>
+<span>7:00 AM – 7:00 PM</span>
+<div class="hero_info_divider"></div>
+<a href="https://maps.app.goo.gl/kTRU5Eg9iHxrS6gJ9" target="_blank">1427 Washington Ave, Cairo</a>
 </div>
-</aside>
-<section class="relative h-[90vh] min-h-[600px] flex items-center justify-center overflow-hidden">
-<div class="absolute inset-0">
-<img class="w-full h-full object-cover brightness-90" alt="Egyptian Feteer Meshaltet with honey" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDRAN13D_FpzF0sxndQz0g9Mhv_gRDpUdu5erbswxXrG4sTpkYCoK6oJ9x057CvQC3-nYnllcHw1UmZQtyfCPP0CRbC3GDeVKO1GpsnqaK9d2AyMuxKk51BI8n2pEjeKLbIvyQ6CJ-Emzoe1K2McVrocNsRaB3uP9UtF7mFfiCvTnoam_iDMzbgz2Zmrt8f9KXydp0-RUTltjyEmMoXb_MxBURklPxWA-oEz8ET8tx1zm1rkJmrYK_okg"/>
-</div>
-<div class="relative z-10 text-center px-margin-mobile">
-<div class="bg-surface/40 backdrop-blur-sm p-stack-lg border border-white/30 inline-block">
-<h1 class="font-display-lg text-[56px] md:text-display-lg text-primary mb-4">A Taste of Cairo</h1>
-<p class="font-headline-sm md:text-headline-sm text-on-surface mb-stack-md italic">Artisan Egyptian Flavors, Delivered Fresh Daily.</p>
-<div class="flex flex-col sm:flex-row gap-4 justify-center">
-<button class="bg-primary text-on-primary px-10 py-4 uppercase tracking-widest font-label-lg hover:bg-primary-container transition-colors shadow-sm">Order Online</button>
-<button class="border border-primary text-primary px-10 py-4 uppercase tracking-widest font-label-lg hover:bg-primary/10 transition-colors">Order Catering</button>
+<div class="hero_btns">
+<a class="btn btn-primary" href="#"><span class="btn-inner">Order Online</span></a>
+<a class="btn btn-secondary" href="#"><span class="btn-inner">Order Catering</span></a>
 </div>
 </div>
 </div>
 </section>
-<section class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop -mt-20 relative z-20 grid grid-cols-1 md:grid-cols-2 gap-gutter">
-<div class="bg-surface border border-primary p-8 md:p-10 flex flex-col items-center text-center shadow-lg">
-<div class="mb-6">
-<span class="material-symbols-outlined text-[60px] text-primary">local_shipping</span>
+<div class="marquee_wrap">
+<div class="marquee_inner marquee_animate">
+<span class="marquee_item">Order Online & Pickup Available</span>
+<span class="marquee_item">Freshly Baked Every Morning</span>
+<span class="marquee_item">Traditional Egyptian Flavors</span>
+<span class="marquee_item">Heritage Grains & Artisanal Techniques</span>
+<span class="marquee_item">Online Only — Delivery Across Cairo</span>
+<span class="marquee_item">Order Online & Pickup Available</span>
+<span class="marquee_item">Freshly Baked Every Morning</span>
+<span class="marquee_item">Traditional Egyptian Flavors</span>
+<span class="marquee_item">Heritage Grains & Artisanal Techniques</span>
+<span class="marquee_item">Online Only — Delivery Across Cairo</span>
 </div>
-<h3 class="font-headline-sm text-headline-sm mb-2 text-primary">ONLINE ONLY</h3>
-<p class="font-body-md text-on-surface-variant">Daily Delivery Across Greater Cairo<br/>7:00 AM – 7:00 PM</p>
 </div>
-<div class="bg-surface border border-primary p-8 md:p-10 flex flex-col items-center text-center shadow-lg">
-<div class="mb-6">
-<span class="material-symbols-outlined text-[60px] text-primary">history_edu</span>
+<section class="section" id="menu">
+<div class="container">
+<h2 style="margin-bottom: 0.5rem;">Menu</h2>
+<p class="text-small" style="opacity:0.6; margin-bottom: 3rem; font-family: 'JetBrains Mono', monospace; letter-spacing: 0.05em; text-transform: uppercase;">Artisan Selections</p>
+<div class="menu_card_wrap">
+<input type="checkbox" class="menu_card_checkbox" id="menu-1"/>
+<label class="menu_card_trigger" for="menu-1">
+<span>Heritage Breads</span>
+<span class="menu_card_icon">+</span>
+</label>
+<div class="menu_card_content_wrap">
+<div class="menu_card_content">
+<div class="menu_card_inner">
+<div class="menu_item">
+<div class="menu_item_top">
+<span class="menu_item_name">Feteer Meshaltet</span>
+<span class="menu_item_dots"></span>
+<span class="menu_item_price">EGP 120</span>
 </div>
-<h3 class="font-headline-sm text-headline-sm mb-2 text-primary">OUR HERITAGE</h3>
-<p class="font-body-md text-on-surface-variant">Egyptian Tradition Reimagined<br/>New Haute Creole-twist</p>
+<span class="menu_item_desc">Traditional layered pastry with ghee</span>
+</div>
+<div class="menu_item">
+<div class="menu_item_top">
+<span class="menu_item_name">Sourdough Baladi</span>
+<span class="menu_item_dots"></span>
+<span class="menu_item_price">EGP 85</span>
+</div>
+<span class="menu_item_desc">24h fermented heritage wheat</span>
+</div>
+<div class="menu_item">
+<div class="menu_item_top">
+<span class="menu_item_name">Artisan Aish Baladi</span>
+<span class="menu_item_dots"></span>
+<span class="menu_item_price">EGP 45</span>
+</div>
+<span class="menu_item_desc">Whole wheat, stone-baked with a nutty char</span>
+</div>
+<div class="menu_item">
+<div class="menu_item_top">
+<span class="menu_item_name">Ancient Grain Sourdough</span>
+<span class="menu_item_dots"></span>
+<span class="menu_item_price">EGP 95</span>
+</div>
+<span class="menu_item_desc">Slow-fermented for 48 hours using wild yeast</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="menu_card_wrap">
+<input type="checkbox" class="menu_card_checkbox" id="menu-2"/>
+<label class="menu_card_trigger" for="menu-2">
+<span>Sweet Pastries</span>
+<span class="menu_card_icon">+</span>
+</label>
+<div class="menu_card_content_wrap">
+<div class="menu_card_content">
+<div class="menu_card_inner">
+<div class="menu_item">
+<div class="menu_item_top">
+<span class="menu_item_name">Basbousa Croissant</span>
+<span class="menu_item_dots"></span>
+<span class="menu_item_price">EGP 145</span>
+</div>
+<span class="menu_item_desc">Filled with semolina & rose syrup</span>
+</div>
+<div class="menu_item">
+<div class="menu_item_top">
+<span class="menu_item_name">Date & Cardamom Danish</span>
+<span class="menu_item_dots"></span>
+<span class="menu_item_price">EGP 130</span>
+</div>
+<span class="menu_item_desc">Premium Siwa dates, flaky pastry</span>
+</div>
+<div class="menu_item">
+<div class="menu_item_top">
+<span class="menu_item_name">Pistachio Honey Swirl</span>
+<span class="menu_item_dots"></span>
+<span class="menu_item_price">EGP 65</span>
+</div>
+<span class="menu_item_desc">Twisted pastry with Egyptian honey & nuts</span>
+</div>
+<div class="menu_item">
+<div class="menu_item_top">
+<span class="menu_item_name">Konafa Cheesecake</span>
+<span class="menu_item_dots"></span>
+<span class="menu_item_price">EGP 150</span>
+</div>
+<span class="menu_item_desc">Creamy cheesecake with crispy konafa topping</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="menu_card_wrap">
+<input type="checkbox" class="menu_card_checkbox" id="menu-3"/>
+<label class="menu_card_trigger" for="menu-3">
+<span>Egyptian Savory</span>
+<span class="menu_card_icon">+</span>
+</label>
+<div class="menu_card_content_wrap">
+<div class="menu_card_content">
+<div class="menu_card_inner">
+<div class="menu_item">
+<div class="menu_item_top">
+<span class="menu_item_name">Spiced Zaatar Twist</span>
+<span class="menu_item_dots"></span>
+<span class="menu_item_price">EGP 95</span>
+</div>
+<span class="menu_item_desc">Authentic herbs and olive oil</span>
+</div>
+<div class="menu_item">
+<div class="menu_item_top">
+<span class="menu_item_name">Feta & Mint Hand Pie</span>
+<span class="menu_item_dots"></span>
+<span class="menu_item_price">EGP 55</span>
+</div>
+<span class="menu_item_desc">Flaky layers filled with farm-fresh feta</span>
+</div>
+<div class="menu_item">
+<div class="menu_item_top">
+<span class="menu_item_name">Hawawshi Croissant</span>
+<span class="menu_item_dots"></span>
+<span class="menu_item_price">EGP 110</span>
+</div>
+<span class="menu_item_desc">Spiced minced meat baked in flaky dough</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="menu_card_wrap">
+<input type="checkbox" class="menu_card_checkbox" id="menu-4"/>
+<label class="menu_card_trigger" for="menu-4">
+<span>Coffee & Drinks</span>
+<span class="menu_card_icon">+</span>
+</label>
+<div class="menu_card_content_wrap">
+<div class="menu_card_content">
+<div class="menu_card_inner">
+<div class="menu_item">
+<div class="menu_item_top">
+<span class="menu_item_name">Egyptian Coffee</span>
+<span class="menu_item_dots"></span>
+<span class="menu_item_price">EGP 50</span>
+</div>
+<span class="menu_item_desc">Traditional bold brew, cardamom-infused</span>
+</div>
+<div class="menu_item">
+<div class="menu_item_top">
+<span class="menu_item_name">Iced Hibiscus Tea</span>
+<span class="menu_item_dots"></span>
+<span class="menu_item_price">EGP 70</span>
+</div>
+<span class="menu_item_desc">Sparkling infusion, mint & lime</span>
+</div>
+<div class="menu_item">
+<div class="menu_item_top">
+<span class="menu_item_name">Sa'eedi Tea</span>
+<span class="menu_item_dots"></span>
+<span class="menu_item_price">EGP 35</span>
+</div>
+<span class="menu_item_desc">Deep red Upper Egyptian tea</span>
+</div>
+<div class="menu_item">
+<div class="menu_item_top">
+<span class="menu_item_name">Cappuccino</span>
+<span class="menu_item_dots"></span>
+<span class="menu_item_price">EGP 65</span>
+</div>
+<span class="menu_item_desc">Hot or iced</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p class="menu_note">All items baked fresh daily. Delivery across Greater Cairo 7:00 AM – 7:00 PM.</p>
 </div>
 </section>
-<div class="bg-primary-fixed text-on-primary-fixed-variant py-4 overflow-hidden whitespace-nowrap mt-stack-xl">
-<div class="inline-block animate-marquee">
-<span class="mx-8 font-label-lg uppercase tracking-widest">Egyptian Tradition Reimagined • Daily Delivery Cairo • Freshly Baked Every Hour • Heritage Grains • Boutique Bakery • Egyptian Tradition Reimagined • Daily Delivery Cairo • Freshly Baked Every Hour • Heritage Grains • Boutique Bakery •</span>
-</div>
-</div>
-<section class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-stack-xl" id="menu">
-<div class="text-center mb-stack-lg">
-<h2 class="font-display-lg text-[80px] md:text-[120px] text-primary opacity-20 leading-none">MENU</h2>
-<p class="font-headline-md text-headline-md -mt-8 md:-mt-12 text-primary">Artisan Selections</p>
-</div>
-<div class="max-w-4xl mx-auto space-y-4">
-<div class="border-b border-primary/30">
-<button class="accordion-trigger w-full py-6 flex justify-between items-center text-primary group" data-target="breads">
-<span class="font-headline-sm text-headline-sm uppercase tracking-wider group-hover:pl-2 transition-all">Heritage Breads</span>
-<span class="material-symbols-outlined transition-transform duration-300">add</span>
-</button>
-<div class="accordion-content" id="breads">
-<div class="grid grid-cols-1 md:grid-cols-2 gap-8 py-8 items-center">
-<div>
-<img alt="Fresh Egyptian Breads" class="w-full h-64 md:h-80 object-cover border border-primary p-2" src="https://lh3.googleusercontent.com/aida/AP1WRLsw_tCgYBXlFCAu263cC6Gpq33-gg6oY-F05zcD6ve0gukAouNZVHUVtH8K1TdHKyq3DB5fQY_3N4uz4amqNc7csUFpx7uuLa6I50maPV3MrBNFdynCgKw0VZJzwYulw-IVEPKxO98rCl_ecs3zN28RUEEj6ad4WJ73KbvDWZMa52mD_upJ7xStbm7YZ8xHK_bwoU5z1eLLgUOpXMK0vvOhyvf38kReyHsMWF5bv682kL_ObDonBCu-1-pI"/>
-</div>
-<div class="space-y-6">
-<div class="flex justify-between items-end border-b border-primary/20 pb-2">
-<div>
-<h4 class="font-headline-sm text-headline-sm">Feteer Meshaltet</h4>
-<p class="text-on-surface-variant italic">Traditional layered pastry with ghee</p>
-</div>
-<div class="text-right">
-<span class="font-label-lg block">EGP 120</span>
-<button class="add-to-basket bg-primary text-white p-2 rounded-full mt-2 hover:scale-110 transition-transform">
-<span class="material-symbols-outlined">add_shopping_cart</span>
-</button>
-</div>
-</div>
-<div class="flex justify-between items-end border-b border-primary/20 pb-2">
-<div>
-<h4 class="font-headline-sm text-headline-sm">Sourdough Baladi</h4>
-<p class="text-on-surface-variant italic">24h fermented heritage wheat</p>
-</div>
-<div class="text-right">
-<span class="font-label-lg block">EGP 85</span>
-<button class="add-to-basket bg-primary text-white p-2 rounded-full mt-2 hover:scale-110 transition-transform">
-<span class="material-symbols-outlined">add_shopping_cart</span>
-</button>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="border-b border-primary/30">
-<button class="accordion-trigger w-full py-6 flex justify-between items-center text-primary group" data-target="pastries">
-<span class="font-headline-sm text-headline-sm uppercase tracking-wider group-hover:pl-2 transition-all">Sweet Pastries</span>
-<span class="material-symbols-outlined transition-transform duration-300">add</span>
-</button>
-<div class="accordion-content" id="pastries">
-<div class="grid grid-cols-1 md:grid-cols-2 gap-8 py-8 items-center">
-<div class="order-2 md:order-1 space-y-6">
-<div class="flex justify-between items-end border-b border-primary/20 pb-2">
-<div>
-<h4 class="font-headline-sm text-headline-sm">Basbousa Croissant</h4>
-<p class="text-on-surface-variant italic">Filled with semolina & rose syrup</p>
-</div>
-<div class="text-right">
-<span class="font-label-lg block">EGP 145</span>
-<button class="add-to-basket bg-primary text-white p-2 rounded-full mt-2 hover:scale-110 transition-transform">
-<span class="material-symbols-outlined">add_shopping_cart</span>
-</button>
-</div>
-</div>
-<div class="flex justify-between items-end border-b border-primary/20 pb-2">
-<div>
-<h4 class="font-headline-sm text-headline-sm">Date & Cardamom Danish</h4>
-<p class="text-on-surface-variant italic">Premium Siwa dates, flaky pastry</p>
-</div>
-<div class="text-right">
-<span class="font-label-lg block">EGP 130</span>
-<button class="add-to-basket bg-primary text-white p-2 rounded-full mt-2 hover:scale-110 transition-transform">
-<span class="material-symbols-outlined">add_shopping_cart</span>
-</button>
-</div>
-</div>
-</div>
-<div class="order-1 md:order-2">
-<img alt="Sweet Egyptian Pastries" class="w-full h-64 md:h-80 object-cover border border-primary p-2" src="https://lh3.googleusercontent.com/aida/AP1WRLsHLhYXsrlO-kmoqqJnnOmXWMrvX4mdZqIHhX3T9FnftHYpN6Hj7BKYG8Owg0O574wJrx0K_cTw0M_ayaOYzTqzXfNLjozInfC7nbdpDwTDpPt3yUavzI9iJDs3bYGlkYFIjTuQohG-VYbfLY6K-RT-uJHlShISP_5o2PlVpSVkDnJfK87QddAs_jvASIltWD5-Lj4aP7pO5oDjsxLB3RqDk_NNQPRY48SHPHdUCuEsoI_FB4y-tHxH5zbI"/>
-</div>
-</div>
-</div>
-</div>
-<div class="border-b border-primary/30">
-<button class="accordion-trigger w-full py-6 flex justify-between items-center text-primary group" data-target="savory">
-<span class="font-headline-sm text-headline-sm uppercase tracking-wider group-hover:pl-2 transition-all">Egyptian Savory</span>
-<span class="material-symbols-outlined transition-transform duration-300">add</span>
-</button>
-<div class="accordion-content" id="savory">
-<div class="grid grid-cols-1 md:grid-cols-2 gap-8 py-8 items-center">
-<div>
-<img alt="Savory Egyptian Treats" class="w-full h-64 md:h-80 object-cover border border-primary p-2" src="https://lh3.googleusercontent.com/aida/AP1WRLtIYrCTdOaWQmVxPbHr69AAKL8NSg64qj3CbcdZGczWrJKzQ0vd0wbqEjNoxFo03-U7Nonl-sjczZRyVCZlyWWaSQ73DKaCDyPTSL0uCAW8lbmz_whtlfwKpNZoQCQXy7Ritw7UG3JqOm1F19He-btR5tcGmfHemYLQ-3tRe10W6x2KtnSoncddPmKXKRdtJLakZmTRFXgYVpN8cZX42ggz9RYyoxI_UXfRGEMw85vp3FrS1PWo59R9tZs"/>
-</div>
-<div class="space-y-6">
-<div class="flex justify-between items-end border-b border-primary/20 pb-2">
-<div>
-<h4 class="font-headline-sm text-headline-sm">Spiced Zaatar Twist</h4>
-<p class="text-on-surface-variant italic">Authentic herbs and olive oil</p>
-</div>
-<div class="text-right">
-<span class="font-label-lg block">EGP 95</span>
-<button class="add-to-basket bg-primary text-white p-2 rounded-full mt-2 hover:scale-110 transition-transform">
-<span class="material-symbols-outlined">add_shopping_cart</span>
-</button>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="border-b border-primary/30">
-<button class="accordion-trigger w-full py-6 flex justify-between items-center text-primary group" data-target="coffee">
-<span class="font-headline-sm text-headline-sm uppercase tracking-wider group-hover:pl-2 transition-all">Coffee & Hibiscus</span>
-<span class="material-symbols-outlined transition-transform duration-300">add</span>
-</button>
-<div class="accordion-content" id="coffee">
-<div class="grid grid-cols-1 md:grid-cols-2 gap-8 py-8 items-center">
-<div class="space-y-6">
-<div class="flex justify-between items-end border-b border-primary/20 pb-2">
-<div>
-<h4 class="font-headline-sm text-headline-sm">Iced Hibiscus Tea</h4>
-<p class="text-on-surface-variant italic">Sparkling infusion, mint & lime</p>
-</div>
-<div class="text-right">
-<span class="font-label-lg block">EGP 70</span>
-<button class="add-to-basket bg-primary text-white p-2 rounded-full mt-2 hover:scale-110 transition-transform">
-<span class="material-symbols-outlined">add_shopping_cart</span>
-</button>
-</div>
-</div>
-</div>
-<div>
-<img alt="Artisanal Drinks" class="w-full h-64 md:h-80 object-cover border border-primary p-2" src="https://lh3.googleusercontent.com/aida/AP1WRLu1GVIQDvdmF5W15A-tpWp5375iG55BbBHaBXc6we967sb5QYSl2PDYqO3lS8y6ktM33G7jn7Cahz9fZHfEaYoI5hgSdYzGBnaXoyiOBIMmt2BQNp1bRP5VeaW2zZN-QhS9dJaPnQCGNVVNdz-aAegWNTSqKacrLo3f6vvCvFkUQfEY_WchROPxD8vSjMdQeN54fuFee9qSB00hmM-ZMMqH6SRdnWc7cy4DBIUZpwDYBhXevgqCxhyfZo-I"/>
-</div>
-</div>
-</div>
-</div>
+<section class="section-small" style="background: var(--swatch--dark-secondary); color: var(--swatch--light);" id="about">
+<div class="container about_text">
+<h2>Bonjour, y'all!</h2>
+<p>We are the little online storefront on Washington Avenue — you know, that unassuming little shop a few doors down from Commander's Palace? But see, when you walk through these shiny lacquered doors, you're in for something bold. The smells of cappuccinos and fresh croissants fill the air, and you might just feel like you're stepping into a bustling café in Paris.</p>
+<p>From morning 'til evening, think of Le Petit Bleu as your little slice of Paris right here in Cairo. Now of course we serve everything with a New Haute Egyptian-twist, so you'll be able to grab our Egyptian Coffee with a Basbousa Croissant for breakfast, or stop in for lunch — no reservations or dress code required.</p>
 </div>
 </section>
-<section class="bg-surface-container-low py-stack-xl" id="about">
-<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
-<div class="grid grid-cols-1 md:grid-cols-2 gap-stack-xl items-center">
-<div class="relative">
-<img class="w-full aspect-[4/5] object-cover border border-primary p-3 bg-white" alt="Egyptian bakers with artisan breads" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCB54kPNUMfQvwGbhx3-ibopEMTdVZ1-ZK0L9J1gLmd6s7thr1N9fbzfevo3dULgVp7tAa6YqDRFw4cRBTA0l1dRN7v_eQf8t_RdoxZQWxYR-tG_8Ch2aYs-rqy2gkcyyQHZmcBumJKzexbIQRJ2N5AUetMWvFyjlpL2CgTSZJRGl4aCEYfuCtzHYih9vgVxUtJkXPDBkcktTU3LxOlnMkgg8rl16gmfCznRLEanUKg1YNXqEUDeXl4MQ"/>
-<div class="absolute -bottom-10 -right-10 hidden md:block w-64 p-6 bg-primary text-on-primary">
-<p class="font-headline-sm text-headline-sm mb-2">Heritage in Every Bite</p>
-<p class="font-body-md opacity-80">Founded on the passion for Egypt's rich baking history.</p>
+<div class="marquee_wrap" style="border-top: 0;">
+<div class="marquee_inner marquee_img_animate">
+<div class="marquee_img_item"><img alt="Bakery" src="https://images.unsplash.com/photo-1509440159596-0249088772ff?w=400&q=80"/></div>
+<div class="marquee_img_item"><img alt="Bakery" src="https://images.unsplash.com/photo-1557925923-cd4648e2a002?w=400&q=80"/></div>
+<div class="marquee_img_item"><img alt="Bakery" src="https://images.unsplash.com/photo-1549931319-a545753467d5?w=400&q=80"/></div>
+<div class="marquee_img_item"><img alt="Bakery" src="https://images.unsplash.com/photo-1517433670267-08bbd4be890f?w=400&q=80"/></div>
+<div class="marquee_img_item"><img alt="Bakery" src="https://images.unsplash.com/photo-1509440159596-0249088772ff?w=400&q=80"/></div>
+<div class="marquee_img_item"><img alt="Bakery" src="https://images.unsplash.com/photo-1557925923-cd4648e2a002?w=400&q=80"/></div>
+<div class="marquee_img_item"><img alt="Bakery" src="https://images.unsplash.com/photo-1549931319-a545753467d5?w=400&q=80"/></div>
+<div class="marquee_img_item"><img alt="Bakery" src="https://images.unsplash.com/photo-1517433670267-08bbd4be890f?w=400&q=80"/></div>
 </div>
 </div>
-<div class="space-y-6">
-<h2 class="font-display-lg text-headline-lg text-primary uppercase">About Lapis</h2>
-<p class="font-body-lg text-body-lg text-on-surface-variant">
-Bonjour, y'all! Or rather, ahlan wa sahlan. We are the little online storefront redefining Washington Avenue's unassuming charm with a Cairo heartbeat. Just a few steps away from tradition, Lapis is where Egyptian heritage meets modern boutique elegance.
-</p>
-<p class="font-body-lg text-body-lg text-on-surface-variant">
-From our signature Feteer Meshaltet to sourdough breads made with ancient heritage grains, every item is crafted for a New Haute Egyptian-twist. We are strictly online, focusing all our artistry on delivering the perfect crunch to your doorstep across Cairo. No reservations or dress code required—just your love for fine dough.
-</p>
-<a class="inline-block boutique-line font-label-lg text-primary mt-4" href="#">FOLLOW OUR JOURNEY →</a>
+<footer class="footer" id="contact">
+<div class="footer_inner">
+<div class="footer_contact">
+<a class="text-large" href="mailto:hello@lepetitbleu.com">HELLO@LEPETITBLEU.COM</a>
+<a class="text-small text-mono" href="tel:+201234567890">+20 123 456 7890</a>
+</div>
+<div class="footer_social">
+<a class="text-mono" href="https://www.instagram.com/" target="_blank">Instagram</a>
+<a class="text-mono" href="#">Facebook</a>
 </div>
 </div>
-</div>
-</section>
-<footer class="bg-surface border-t border-primary pt-stack-xl pb-10">
-<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop grid grid-cols-1 md:grid-cols-3 gap-gutter">
-<div class="space-y-6">
-<h3 class="font-display-lg text-headline-lg text-primary">CONTACT</h3>
-<div class="space-y-2">
-<a class="block font-headline-sm text-headline-sm text-primary hover:opacity-70 transition-opacity" href="mailto:hello@lapisbakery.com">HELLO@LAPISBAKERY.COM</a>
-<p class="font-headline-sm text-headline-sm text-primary">(20) 012 345 6789</p>
-</div>
-</div>
-<div class="flex flex-col md:items-center justify-center space-y-4">
-<span class="font-display-lg text-display-lg text-primary opacity-10 select-none">LAPIS</span>
-<p class="font-body-md text-on-surface-variant text-center">© 2024 Lapis Artisan Bakery.<br/>Online Only - Delivery Across Cairo.</p>
-</div>
-<div class="flex flex-col md:items-end space-y-4">
-<h4 class="font-label-lg text-primary uppercase">Quick Links</h4>
-<div class="flex flex-col md:items-end gap-2">
-<a class="font-label-sm text-on-secondary-fixed-variant hover:text-primary transition-all" href="#">Privacy Policy</a>
-<a class="font-label-sm text-on-secondary-fixed-variant hover:text-primary transition-all" href="#">Shipping & Returns</a>
-<a class="font-label-sm text-on-secondary-fixed-variant hover:text-primary transition-all" href="#">Newsletter Signup</a>
-<a class="font-label-sm text-on-secondary-fixed-variant hover:text-primary transition-all" href="#">Instagram</a>
-<a class="font-label-sm text-on-secondary-fixed-variant hover:text-primary transition-all" href="#">Facebook</a>
-</div>
-</div>
-</div>
-<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop mt-stack-lg pt-6 border-t border-outline-variant flex flex-col md:flex-row justify-between items-center gap-4 text-label-sm text-on-surface-variant uppercase tracking-widest">
-<span>Cairo, Egypt</span>
-<button class="flex items-center gap-2 hover:text-primary transition-colors" onclick="window.scrollTo({top:0,behavior:'smooth'})">
-Scroll to Top
-<span class="material-symbols-outlined text-sm">arrow_upward</span>
+<div class="footer_bottom">
+<span>© 2024 Le Petit Bleu. A concept by Commander's Palace.</span>
+<button class="scroll-top text-mono" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+<span>↑</span> Scroll to Top
 </button>
 </div>
 </footer>
-<div class="fixed inset-0 bg-black/40 backdrop-blur-sm z-[70] hidden" id="cart-overlay" onclick="toggleCart()"></div>
-<div class="cart-drawer fixed top-0 right-0 h-full w-full max-w-md bg-surface z-[80] shadow-2xl flex flex-col" id="cart-drawer">
-<div class="p-6 border-b border-outline-variant flex justify-between items-center bg-primary text-on-primary">
-<h2 class="font-headline-sm text-headline-sm">Your Basket</h2>
-<button class="material-symbols-outlined" onclick="toggleCart()">close</button>
-</div>
-<div class="flex-grow overflow-y-auto p-6 space-y-6" id="cart-items">
-<div class="text-center py-20 space-y-4" id="cart-empty">
-<span class="material-symbols-outlined text-6xl text-outline-variant">shopping_basket</span>
-<p class="font-body-lg text-on-surface-variant">Your basket is currently empty.</p>
-<button class="text-primary font-label-lg underline" onclick="toggleCart()">Continue Shopping</button>
-</div>
-</div>
-<div class="p-6 border-t border-outline-variant bg-surface-container-low hidden" id="cart-footer">
-<div class="flex justify-between items-center mb-6">
-<span class="font-label-lg text-on-surface-variant">SUBTOTAL</span>
-<span class="font-headline-sm text-primary" id="cart-total">EGP 0</span>
-</div>
-<button class="w-full bg-primary text-on-primary py-4 uppercase tracking-widest font-label-lg hover:bg-primary-container transition-colors shadow-lg">Checkout Now</button>
-</div>
-</div>
 <script>
-document.querySelectorAll('.accordion-trigger').forEach(trigger => {
-trigger.addEventListener('click', () => {
-const targetId = trigger.getAttribute('data-target');
-const content = document.getElementById(targetId);
-const icon = trigger.querySelector('.material-symbols-outlined');
-const isActive = content.classList.contains('active');
-document.querySelectorAll('.accordion-content').forEach(c => c.classList.remove('active'));
-document.querySelectorAll('.accordion-trigger .material-symbols-outlined').forEach(i => {
-i.innerText = 'add';
-i.style.transform = 'rotate(0deg)';
-});
-if (!isActive) {
-content.classList.add('active');
-icon.innerText = 'remove';
-icon.style.transform = 'rotate(180deg)';
-}
-});
-});
-function toggleCart() {
-const drawer = document.getElementById('cart-drawer');
-const overlay = document.getElementById('cart-overlay');
-drawer.classList.toggle('open');
-overlay.classList.toggle('hidden');
-}
-const sideNav = document.getElementById('side-nav');
-document.getElementById('mobile-menu-trigger').addEventListener('click', toggleMobileMenu);
-function toggleMobileMenu() {
-sideNav.classList.toggle('-translate-x-full');
-}
-let count = 0;
-document.querySelectorAll('.add-to-basket').forEach(btn => {
-btn.addEventListener('click', (e) => {
-e.stopPropagation();
-count++;
-document.getElementById('cart-count').innerText = count;
-btn.innerHTML = '<span class="material-symbols-outlined">check</span>';
-btn.classList.replace('bg-primary', 'bg-tertiary-container');
-document.getElementById('cart-empty').classList.add('hidden');
-document.getElementById('cart-footer').classList.remove('hidden');
+if (sessionStorage.getItem('visited') == null) {
+document.documentElement.classList.add('show-loader');
 setTimeout(() => {
-btn.innerHTML = '<span class="material-symbols-outlined">add_shopping_cart</span>';
-btn.classList.replace('bg-tertiary-container', 'bg-primary');
-}, 2000);
-const itemsList = document.getElementById('cart-items');
-const newItem = document.createElement('div');
-newItem.className = 'flex justify-between items-center border-b border-outline-variant pb-4';
-newItem.innerHTML = `
-<div class="flex items-center gap-4">
-<div class="w-16 h-16 bg-surface-variant flex-shrink-0"></div>
-<div>
-<p class="font-label-lg text-primary">Artisan Item</p>
-<p class="text-xs text-on-surface-variant">Qty: 1</p>
-</div>
-</div>
-<span class="font-label-lg">EGP 120</span>`;
-itemsList.prepend(newItem);
-setTimeout(toggleCart, 300);
-});
-});
-let currentLang = 'en';
-document.getElementById('lang-toggle').addEventListener('click', () => {
-const html = document.documentElement;
-const label = document.getElementById('lang-label');
-if (currentLang === 'en') {
-html.setAttribute('dir', 'rtl');
-html.setAttribute('lang', 'ar');
-label.innerText = 'English';
-currentLang = 'ar';
-} else {
-html.setAttribute('dir', 'ltr');
-html.setAttribute('lang', 'en');
-label.innerText = 'العربية';
-currentLang = 'en';
+document.documentElement.classList.remove('show-loader');
+}, 1500);
 }
+sessionStorage.setItem('visited', 'true');
+document.querySelector('.preloader').addEventListener('click', () => {
+document.documentElement.classList.remove('show-loader');
+});
+document.querySelectorAll('.menu_card_checkbox').forEach(cb => {
+cb.addEventListener('change', function() {
+if (this.checked) {
+document.querySelectorAll('.menu_card_checkbox').forEach(other => {
+if (other !== this) other.checked = false;
+});
+}
+});
 });
 </script>
 </body>
